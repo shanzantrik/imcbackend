@@ -30,8 +30,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('add-complaints', [ComplaintsController::class, 'store'])->name('save-complaints');
     Route::get('edit-complaints/{id}', [ComplaintsController::class, 'edit'])->name('edit-complaints');
     Route::put('update-complaints/{id}', [ComplaintsController::class, 'update'])->name('update-complaints');
-
-    // Route::delete('delete-complaints/{id}', [ComplaintsController::class, 'destroy'])->name('delete-complaints');
+    Route::get('delete-complaints/{id}', [ComplaintsController::class, 'destroy']);
 });
 
 //CompostController Routes
