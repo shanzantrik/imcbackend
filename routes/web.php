@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Firebase\ComplaintsController;
 use App\Http\Controllers\Firebase\CompostController;
 use App\Http\Controllers\Firebase\GarbagesController;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,8 +23,8 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-//Complaint Routes
-Route::middleware('auth')->group( callback: function () {
+
+Route::group(['middleware' => ['auth']], function () {
     Route::get('complaints', [ComplaintsController::class, 'index'])->name('complaints-index');
     Route::get('add-complaints', [ComplaintsController::class, 'create'])->name('add-complaints');
     Route::post('add-complaints', [ComplaintsController::class, 'store'])->name('save-complaints');
@@ -34,13 +35,13 @@ Route::middleware('auth')->group( callback: function () {
 });
 
 //CompostController Routes
-Route::middleware('auth')->group( callback: function () {
+Route::group(['middleware' => ['auth']], function () {
     Route::get('composts', [CompostController::class, 'index'])->name('composts-index');
     Route::get('add-composts', [CompostController::class, 'create'])->name('add-composts');
     Route::post('add-composts', [CompostController::class, 'store'])->name('save-composts');
 });
 //Garbages Routes
-Route::middleware('auth')->group( callback: function () {
+Route::group(['middleware' => ['auth']], function () {
     Route::get('garbages', [GarbagesController::class, 'index'])->name('garbages-index');
     Route::get('add-garbages', [GarbagesController::class, 'create'])->name('add-garbages');
     Route::post('add-garbages', [GarbagesController::class, 'store'])->name('save-garbages');
