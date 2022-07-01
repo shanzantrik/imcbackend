@@ -37,8 +37,7 @@
                             </thead>
                             <tbody>
                                 @php $i=1; @endphp
-                                @forelse($complaints as $key => $complaint)
-
+                                @foreach($complaints as $key=>$complaint)
                                 <tr>
                                     <td>{{ $i++ }} </td>
                                     <td>{{ $complaint['title'] }}</td>
@@ -46,8 +45,8 @@
                                     <td>{{ $complaint['phone_no'] }}</td>
                                     <td>{{ $complaint['address'] }}</td>
                                     <td>{{ $complaint['device_info'] }}</td>
-                                    {{-- <td>{{ $complaint['latitude'] }}</td>
-                                    <td>{{ $complaint['longitude'] }}</td> --}}
+                                    {{-- <td>{{ $complaint['latitude'] }}</td> --}}
+                                    {{-- <td>{{ $complaint['longitude'] }}</td> --}}
                                     <td>{{ $complaint['status'] }}</td>
                                     <td><a href="{{ $complaint['fileName'] }}" target="_blank"><img
                                                 src="{{ $complaint['fileName'] }}" width="200px" height="250px" /></a>
@@ -64,17 +63,9 @@
                                     </td>
 
                                 </tr>
-
-                                @empty
-                                <tr>
-                                    <td colspan="11">No Record Found</td>
-                                </tr>
-
-                                @endforelse
-
+                                @endforeach
                             </tbody>
                         </table>
-                        {{-- {!! $complaints->render() !!} --}}
                     </div>
                 </div>
             </div>

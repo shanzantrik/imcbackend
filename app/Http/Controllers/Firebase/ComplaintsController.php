@@ -19,8 +19,11 @@ class ComplaintsController extends Controller
     public function index()
     {
         $complaints = $this->database->getReference($this->tablename)->getValue();
-        // $complaints = array_reverse($complaints);
-        return view('firebase.complaints.index', compact('complaints'));
+        if ($complaints != NULL) {
+            return view('firebase.complaints.index', compact('complaints'));
+        } else {
+            return view('home')->with('status', 'Currently No Complaints Found');
+        }
     }
 
     public function create()
