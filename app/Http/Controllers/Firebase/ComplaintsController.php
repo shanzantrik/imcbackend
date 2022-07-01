@@ -22,7 +22,7 @@ class ComplaintsController extends Controller
         if ($complaints != NULL) {
             return view('firebase.complaints.index', compact('complaints'));
         } else {
-            return view('home')->with('status', 'Currently No Complaints Found');
+            return view('firebase.complaints.index')->with('status', 'Currently No Complaints Found');
         }
     }
 

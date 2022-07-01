@@ -37,6 +37,7 @@
                             </thead>
                             <tbody>
                                 @php $i=1; @endphp
+                                @isset($complaints)
                                 @foreach($complaints as $key=>$complaint)
                                 <tr>
                                     <td>{{ $i++ }} </td>
@@ -64,6 +65,14 @@
 
                                 </tr>
                                 @endforeach
+                                @endisset
+                                @empty($complaints)
+                                <tr>
+                                    <td colspan="10">
+                                        <h4 class="alert alert-warning">No Complaints Found</h4>
+                                    </td>
+                                </tr>
+                                @endempty
                             </tbody>
                         </table>
                     </div>
