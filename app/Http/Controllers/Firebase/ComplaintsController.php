@@ -19,7 +19,7 @@ class ComplaintsController extends Controller
     public function index()
     {
         $complaints = $this->database->getReference($this->tablename)->getValue();
-        $complaints = array_reverse($complaints);
+        // $complaints = array_reverse($complaints);
         return view('firebase.complaints.index', compact('complaints'));
     }
 
